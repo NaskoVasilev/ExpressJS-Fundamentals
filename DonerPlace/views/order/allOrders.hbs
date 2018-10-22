@@ -1,0 +1,42 @@
+<h1>Manage orders</h1>
+<div class="orders">
+    <form method="post" action="/order/saveChanges">
+        {{#each orders}}
+            <div class="order">
+                <span class="order-time">{{formatedDate}}</span>
+                <span class="order-name">{{product.category}} doner, {{product.size}} cm</span>
+
+                <span class="order-status" data="{{status}}">
+							<select id="status" name="{{_id}}">
+								<option class="pending" value="Pending">Pending</option>
+								<option class="inProgress" value="In Progress">In Progress</option>
+								<option class="inTransit" value="In Transit">In Transit</option>
+								<option class="delivered" value="Delivered">Delivered</option>
+							</select>
+						</span>
+                <a href="/order/details/{{_id}}" class="button order-button">Details</a>
+            </div>
+        {{/each}}
+        <input type="submit" value="Save Changes" class="button" style="border:0">
+    </form>
+</div>
+<script>
+    let selectArr=document.getElementsByClassName('order-status')
+    let status = "";
+    for (const selectArrElement of selectArr) {
+        status = selectArrElement.getAttribute('data')
+        setStatus(status,selectArrElement)
+    }
+
+    function setStatus(status,orderElement) {
+        if (status === 'Pending') {
+            orderElement.getElementsByClassName('pending')[0].setAttribute('selected', 'selected')
+        } else if (status === 'In Progress') {
+            orderElement.getElementsByClassName('inProgress')[0].setAttribute('selected', 'selected')
+        } else if (status === 'In Transit') {
+            orderElement.getElementsByClassName('inTransit')[0].setAttribute('selected', 'selected')
+        } else if (status === 'Delivered') {
+            orderElement.getElementsByClassName('delivered')[0].setAttribute('selected', 'selected')
+        }
+    }
+</script>

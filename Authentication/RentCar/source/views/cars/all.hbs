@@ -1,0 +1,21 @@
+<h1>Cars</h1>
+{{#each cars}}
+<div class="cars-container">
+        <div class="car-container">
+            <section>
+                <a href="/cars/edit/{{_id}}">
+                    <img src="{{imageUrl}}" alt='car-image' />    
+                </a>           
+            </section>
+            <section class="info">
+                <strong>{{brand}} - {{model}} {{year}}</strong>
+                <span class="rented">Price per day: 
+                    <strong>{{pricePerDay}}</strong>
+                </span>
+                <form action="/cars/rent/{{_id}}" method="POST">
+                <input type="submit" value="Rent car">
+                </form>
+            </section>
+        </div>
+</div>
+{{/each}}

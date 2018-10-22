@@ -1,0 +1,20 @@
+<h1>Welcome to Messenger</h1>
+
+{{#if currentUser}}
+    <form action="/threads/find" method="post">
+        <input name="username" placeholder="username" />
+        <input type="submit" value="Search" />
+    </form>
+{{/if}}
+
+{{#each users}}
+    <a href="/threads/{{username}}">{{username}}</a>
+    {{#if isBlocked}}
+        <a href="/users/{{username}}/unblock">Unblock {{username}}</a>
+    {{else}}
+        <a href="/users/{{username}}/block">Block {{username}}</a>
+    {{/if}}
+    <br>
+{{else}}
+    <i>No threads.</i>
+{{/each}}

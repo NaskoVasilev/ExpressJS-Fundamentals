@@ -1,0 +1,47 @@
+<div class="chat-wrapper">
+    <div id="message-wrapper">
+        {{#each messages}}
+            <div class="message-row">
+                {{#if isCurrentUserMessage}}
+                    {{#if isLink}}
+                        <a href="{{content}}" class="thread-message left">{{content}}</a>
+                        {{#if isImage}}
+                        <img src="{{content}}" class="thread-message left">
+                        {{/if}}
+                    {{else}}
+                        <span class="thread-message left">{{content}}</span>
+                    {{/if}}
+                {{else}}
+                    {{#if isLink}}
+                        <a href="{{content}}" class="thread-message right">{{content}}</a>
+                        {{#if isImage}}
+                            <img src="{{content}}" class="thread-message right">
+                        {{/if}}
+                    {{else}}
+                        <span class="thread-message right">{{content}}</span>
+                    {{/if}}
+
+                    {{#if isLiked}}
+                        <a href="/message/{{_id}}/unlike/{{../otherUsername}}" class="thread-message right">Unlike</a>
+                    {{else}}
+                        <a href="/message/{{_id}}/like/{{../otherUsername}}" class="thread-message right">Like </a>
+                    {{/if}}
+
+                {{/if}}
+
+            </div>
+        {{/each}}
+    </div>
+    <div id="chat-form">
+        {{#if isBlocked}}
+            <h3>You are blocked</h3>
+        {{else}}
+            <form method="post" action="/threads/message/send">
+                <textarea col="20" row="4" name="message" placeholder="message"></textarea>
+                <input value="{{_id}}" name="threadId" hidden/>
+                <input value="{{otherUsername}}" name="otherUsername" hidden/>
+                <input type="submit" value="Submit">
+            </form>
+        {{/if}}
+    </div>
+</div>

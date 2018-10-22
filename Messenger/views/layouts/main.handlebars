@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Messenger</title>
+    <link href="/css/site.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container nav">
+        <ul class="menu">
+            <li>
+                <a href="/">Home</a>
+            </li>
+            {{#if currentUser}}
+            <li>{{currentUser.username}}</li>
+            <li>
+                <a href="/users/logout">Logout</a>
+            </li>
+            {{else}}
+            <li>
+                <a href="/users/register">Register</a>
+            </li>
+            <li>
+                <a href="/users/login">Login</a>
+            </li>
+            {{/if}}
+        </ul>
+    {{#if globalError}}
+        <h3 style="color: red">{{globalError}}</h3>
+    {{/if}} 
+        {{{body}}}
+    </div>
+</body>
+
+</html>

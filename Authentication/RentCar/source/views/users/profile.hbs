@@ -1,0 +1,36 @@
+<h1>Profile</h1>
+<section>
+    <h2>Username: {{username}}</h2>
+</section>
+<section>
+    <h2>All rented cars</h2>
+    <table>
+        <thead>
+            <tr>
+                <td>Car</td>
+                <td>Price Per Day</td>
+                <td>Info</td>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each rentedCars}}
+                <tr>
+                    <td>{{brand}} {{model}}</td>
+                    <td>{{pricePerDay}}</td>
+                    <td>
+                        <form action="/cars/return/{{_id}}" method="POST">
+                    <input type="submit" value="Return car"></form>
+                    </td>
+                </tr>
+            {{else}}
+                <tr>
+                    <td colspan="2">
+                         <i>No rented cars. 
+                             <a href="/cars/all">Rent now</a>
+                         </i>    
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</section>

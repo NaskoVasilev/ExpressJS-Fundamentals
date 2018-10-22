@@ -1,0 +1,24 @@
+<h1>Edit</h1>
+{{#if error}}
+<div id="errBox">
+    <h2 id="errMsg">Please fill all fields</h2>
+</div>
+{{/if}}
+<div class="container">
+    <form action="/book/edit/{{_id}}" method="POST">
+        <label for="bookTitle">Title</label>
+        <input type="text" id="bookTitle" name="title" value="{{title}}" placeholder="The title of the book">
+
+        <label for="bookYear">Year</label>
+        <input type="text" id="bookYear" name="releaseDate" value="{{releaseDate}}" placeholder="Year of release">
+
+        <label for="bookPoster">Poster URL</label>
+        <input type="text" id="bookPoster" name="imageUrl" value="{{imageUrl}}" placeholder="Link to a poster">
+
+        <label for="bookAuthor">Book author</label>
+        <input type="text" id="bookAuthor" name="author" value="{{author}}" placeholder="Book author">
+
+        <input type="submit" value="Submit">
+
+    </form>
+</div>

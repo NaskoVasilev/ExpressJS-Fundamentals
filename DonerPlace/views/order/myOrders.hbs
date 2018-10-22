@@ -1,0 +1,8 @@
+<h1>Your orders</h1>
+<div class="orders">
+    {{#each orders}}
+        {{> order}}
+    {{else}}
+        <p>No orders!</p>
+    {{/each}}
+</div>
