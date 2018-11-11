@@ -12,3 +12,5 @@ JS Web development. SoftUni course.
 5. View Engines
 
 6. Authentication
+
+   Final Exam - 100/100 points
